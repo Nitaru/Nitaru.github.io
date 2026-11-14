@@ -15,7 +15,7 @@ window.DATA = {
     "and I build the infrastructure I'd want to be on call for in my own time.",
   about: [
     "I'm an L2 support engineer at Virtuozzo in Tbilisi and a Computer Science student at Ilia State University, graduating in 2027. Since March 2026 I work on production clusters built on Linux, KVM and OpenStack: reading logs and kernel messages over SSH, finding root causes from evidence, and handing developers a timeline that separates what is verified from what is not.",
-    "Outside of work I build hands-on labs to turn that troubleshooting experience into infrastructure skills: hardened Linux servers, Kubernetes platforms, CI/CD and monitoring. Every project here runs from one command and ships with tests or scripted demos that prove its claims, including the mistakes I hit along the way.",
+    "Outside of work I build hands-on labs to turn that troubleshooting experience into infrastructure skills: hardened Linux servers, Kubernetes platforms, cloud infrastructure as code, CI/CD and monitoring. Every project here runs from one command and ships with tests or scripted demos that prove its claims, including the mistakes I hit along the way.",
   ],
   looking:
     "Linux administration, infrastructure operations and SRE / DevOps roles where I can keep growing by doing.",
@@ -51,6 +51,7 @@ window.DATA = {
     { n: "SMART / NVMe health", g: "Linux & troubleshooting", l: "work" },
     { n: "KVM / libvirt", g: "Virtualization & cloud", l: "work" },
     { n: "OpenStack", g: "Virtualization & cloud", l: "work" },
+    { n: "AWS", g: "Virtualization & cloud", l: "built" },
     { n: "Open vSwitch", g: "Networking", l: "work" },
     { n: "VLANs & bonds", g: "Networking", l: "work" },
     { n: "WireGuard", g: "Networking", l: "built" },
@@ -71,6 +72,7 @@ window.DATA = {
     { n: "Loki", g: "CI/CD & monitoring", l: "built" },
     { n: "Nginx", g: "CI/CD & monitoring", l: "built" },
     { n: "fail2ban / UFW", g: "Security", l: "built" },
+    { n: "Checkov", g: "Security", l: "built" },
     { n: "Python", g: "Languages", l: "learning" },
     { n: "Node.js", g: "Languages", l: "built" },
     { n: "RHCSA", g: "Certifications", l: "learning" },
@@ -92,6 +94,24 @@ window.DATA = {
       lesson:
         "My first network-policy test proved nothing: the probe pod could exit before kubectl attached, and Redis does not speak HTTP. I rebuilt it with a control target and verified it both ways, policies off and policies on.",
       diagram: "k8s",
+    },
+    {
+      id: "aws",
+      title: "AWS Terraform Hands-On",
+      tagline: "A VPC, a hardened bastion and an Auto Scaling web tier, applied, tested and destroyed",
+      repo: "https://github.com/Nitaru/AWS-Terraform-Hands-On",
+      summary:
+        "Terraform modules for a VPC with public and private subnets, a bastion limited to one admin address, and Auto Scaling web servers behind an Application Load Balancer. Remote state in S3, Checkov and tflint in CI, applied to a real account, verified from outside, then destroyed with nothing left behind.",
+      skills: ["Terraform", "AWS", "Checkov", "GitHub Actions", "Linux", "Bash", "fail2ban / UFW"],
+      metrics: [
+        ["37", "resources applied, then destroyed in 1m42s"],
+        ["9 / 9", "checks passed against the live stack"],
+        ["102 s", "to restore capacity after I killed an instance"],
+        ["5.2%", "of requests failed during that recovery"],
+      ],
+      lesson:
+        "My first check for \"web servers have no public IP\" could never fail: the query dropped null values, so the loop ran zero times and passed. I rewrote it to require the instances it expects. The recovery test also showed the stack heals but is not zero-downtime when an instance dies abruptly, and the README says so.",
+      diagram: "aws",
     },
     {
       id: "linux",
@@ -155,6 +175,19 @@ window.DATA = {
         { id: "a", t: "Ansible", x: 240, y: 12, w: 130, h: 36, d: "Configures both machines. A second run changes nothing." },
       ],
       edges: [["u", "b"], ["v", "b"], ["b", "p"], ["a", "b"], ["p", "f"]],
+    },
+    aws: {
+      w: 720, h: 250,
+      nodes: [
+        { id: "u", t: "Internet", x: 10, y: 40, w: 90, h: 44, d: "Anyone with the load balancer's address. Only port 80 is open to them." },
+        { id: "l", t: "ALB", x: 170, y: 40, w: 100, h: 44, d: "Application Load Balancer across two availability zones. Health-checks /health every 10 seconds and sends traffic only to healthy instances." },
+        { id: "w", t: "Web ASG ×2–4", x: 400, y: 95, w: 140, h: 44, d: "Auto Scaling Group in private subnets, no public IPs, IMDSv2 only, encrypted volumes. Scales to hold CPU near 50% and replaces failed instances." },
+        { id: "a", t: "Admin, one IP", x: 10, y: 150, w: 100, h: 44, d: "The only address allowed to SSH in. The module refuses 0.0.0.0/0." },
+        { id: "b", t: "Bastion", x: 170, y: 150, w: 100, h: 44, d: "Key-only SSH, no root login, fail2ban. The web tier accepts SSH only from this security group." },
+        { id: "n", t: "NAT gateway", x: 590, y: 95, w: 110, h: 44, d: "Outbound-only internet for the private instances, for package installs. One gateway to keep the demo cheap." },
+        { id: "f", t: "Flow logs · S3 remote state with locking · Checkov and tflint in CI", x: 170, y: 205, w: 530, h: 34, d: "Flow logs go to CloudWatch for a year. State lives in a versioned, encrypted bucket. CI runs fmt, validate, Checkov and tflint on every push.", band: true },
+      ],
+      edges: [["u", "l"], ["l", "w"], ["a", "b"], ["b", "w"], ["w", "n"]],
     },
   },
 };

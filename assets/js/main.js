@@ -31,7 +31,7 @@
 
   /* ---------- hero ---------- */
   $("hero-lead").textContent = D.summary;
-  [["Now", "Support Engineer (L2), Virtuozzo"], ["Studying", "Computer Science, graduating 2027"], ["Building", "Linux · Kubernetes · SRE skills"]]
+  [["Now", "Support Engineer (L2), Virtuozzo"], ["Studying", "Computer Science, graduating 2027"], ["Building", "Linux · Kubernetes · AWS"]]
     .forEach(function (f) { $("hero-facts").appendChild(el("div", {}, el("dt", {}, f[0]), el("dd", {}, f[1]))); });
 
   /* ---------- about ---------- */
