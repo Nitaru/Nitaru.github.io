@@ -144,7 +144,7 @@ window.DATA = {
       skills: ["Docker", "Consul", "Nginx", "GitHub Actions", "Prometheus", "Grafana", "Loki", "Bash", "Node.js"],
       metrics: [
         ["4", "self-contained projects"],
-        ["81", "end-to-end checks across three of them, plus a zero-downtime test for the fourth"],
+        ["83", "end-to-end checks across three of them, plus a zero-downtime test for the fourth"],
       ],
       parts: [
         ["Service Discovery", "Consul registry, health checks, a gateway that load-balances healthy instances."],
