@@ -140,11 +140,11 @@ window.DATA = {
       tagline: "Four classic DevOps projects, each runnable with Docker Compose",
       repo: "https://github.com/Nitaru/Nitaru_DevOps_Shenanigans",
       summary:
-        "Service discovery with Consul, a five-service Docker app built with best practices, zero-downtime blue-green deployments with CI/CD, and a full Prometheus, Grafana and Loki monitoring stack with custom exporters and alerting.",
+        "Service discovery with Consul, a five-service Docker app built with best practices, zero-downtime blue-green deployments with CI/CD, and a full Prometheus, Grafana and Loki monitoring stack with custom exporters and alerting. Each project has a test that builds it and checks what its README claims, including a real alert firing and resolving.",
       skills: ["Docker", "Consul", "Nginx", "GitHub Actions", "Prometheus", "Grafana", "Loki", "Bash", "Node.js"],
       metrics: [
         ["4", "self-contained projects"],
-        ["1", "command to run each"],
+        ["81", "end-to-end checks across three of them, plus a zero-downtime test for the fourth"],
       ],
       parts: [
         ["Service Discovery", "Consul registry, health checks, a gateway that load-balances healthy instances."],
