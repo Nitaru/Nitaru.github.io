@@ -108,12 +108,13 @@ window.DATA = {
       tagline: "A VPC, a hardened bastion and an Auto Scaling web tier, applied, tested and destroyed",
       repo: "https://github.com/Nitaru/AWS-Terraform-Hands-On",
       summary:
-        "Terraform modules for a VPC with public and private subnets, a bastion limited to one admin address, and Auto Scaling web servers behind an Application Load Balancer. Remote state in S3, Checkov and tflint in CI, applied to a real account, verified from outside, then destroyed with nothing left behind.",
+        "Terraform modules for a VPC with public and private subnets, a bastion limited to one admin address, and Auto Scaling web servers behind an Application Load Balancer. Remote state in S3, Checkov, tflint and 17 offline module tests in CI, CloudWatch alarms proven by breaking the service on purpose, applied to a real account, verified from outside, then destroyed with nothing left behind.",
       skills: ["Terraform", "AWS", "Checkov", "GitHub Actions", "Linux", "Bash", "fail2ban / UFW"],
       metrics: [
         ["37", "resources applied, then destroyed in 1m42s"],
-        ["9 / 9", "checks passed against the live stack"],
+        ["11 / 11", "checks passed against the live stack, alarms included"],
         ["102 s", "to restore capacity after I killed an instance"],
+        ["17 s", "for an alarm to fire after I broke every web instance"],
         ["5.2%", "of requests failed during that recovery"],
       ],
       lesson:
@@ -164,7 +165,7 @@ window.DATA = {
     steps: [
       {
         id: "aws", brand: "#7B42BC", title: "AWS Terraform Hands-On", why: "Read this first",
-        story: "The smallest complete story: a real AWS stack applied, checked from outside (9 of 9 checks), broken on purpose by killing an instance, and destroyed with nothing left. It also shows me catching my own bad test, a check that could never fail.",
+        story: "The smallest complete story: a real AWS stack applied, checked from outside (11 of 11 checks), broken on purpose by killing an instance, and destroyed with nothing left. It also shows me catching my own bad test, a check that could never fail.",
         read: [["Measured results", "https://github.com/Nitaru/AWS-Terraform-Hands-On#measured-results"], ["What went wrong", "https://github.com/Nitaru/AWS-Terraform-Hands-On#things-that-went-wrong-and-what-they-taught-me"]],
       },
       {
