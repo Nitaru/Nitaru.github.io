@@ -152,6 +152,7 @@
   var ICONS = {
     mail: '<path d="M3 6h18v12H3zM3 7l9 7 9-7" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>',
     gh: '<path d="M8 7l-5 5 5 5M16 7l5 5-5 5M14 4l-4 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>',
+    cv: '<path d="M6 2h8l4 4v16H6zM14 2v4h4M9 12h6M9 16h6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>',
     in: '<circle cx="12" cy="8" r="4" fill="none" stroke="currentColor" stroke-width="2"/><path d="M4 21c1-4 4-6 8-6s7 2 8 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>',
   };
   function icon(k) {
@@ -161,9 +162,10 @@
     return s;
   }
   $("looking").textContent = "I'm looking for " + D.looking.charAt(0).toLowerCase() + D.looking.slice(1);
-  [["mail", D.email, D.links.email, true], ["gh", "GitHub", D.links.github], ["in", "LinkedIn", D.links.linkedin]].forEach(function (c) {
+  [["mail", D.email, D.links.email, true], ["gh", "GitHub", D.links.github], ["in", "LinkedIn", D.links.linkedin], ["cv", "Download CV (PDF)", "assets/Nikoloz_Tolordava_CV.pdf"]].forEach(function (c) {
     var a = el("a", { class: "btn" + (c[3] ? " primary" : ""), href: c[2] }, icon(c[0]), c[1]);
     if (c[2].indexOf("http") === 0) { a.target = "_blank"; a.rel = "noopener noreferrer"; }
+    if (c[0] === "cv") a.setAttribute("download", "Nikoloz_Tolordava_CV.pdf");
     $("contact-links").appendChild(a);
   });
   $("year").textContent = new Date().getFullYear();
