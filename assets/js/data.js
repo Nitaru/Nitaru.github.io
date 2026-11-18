@@ -95,6 +95,7 @@ window.DATA = {
         ["2 → 8", "replicas under load, then back down"],
         ["35", "smoke-test assertions"],
         ["29 → 0", "HIGH and CRITICAL image CVE findings after the first Trivy scan"],
+        ["602 → 0", "failed product requests during a 45 s Redis outage, before and after a chaos experiment found the flaw"],
       ],
       lesson:
         "The chart keeps the Redis password across upgrades with Helm's lookup, but Argo CD renders with helm template, which cannot read the cluster, so every sync would have invented a new password. I told Argo to ignore that one field and checked it by hashing the password across two real Git-driven syncs. My first test of this was wrong too: it silently dropped the sync option I was testing.",
