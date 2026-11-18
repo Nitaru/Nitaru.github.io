@@ -92,7 +92,7 @@ window.DATA = {
       skills: ["Kubernetes", "Helm", "Argo CD", "Prometheus", "Kyverno", "Trivy", "Calico", "Traefik", "Docker", "GitHub Actions"],
       metrics: [
         ["55 / 55", "requests succeeded while every pod was replaced"],
-        ["2 → 8", "replicas under load, then back down"],
+        ["2 → 8", "replicas in 68 s under load, back to 2 in 5 min once it stopped"],
         ["35", "smoke-test assertions"],
         ["29 → 0", "HIGH and CRITICAL image CVE findings after the first Trivy scan"],
         ["602 → 0", "failed product requests during a 45 s Redis outage, before and after a chaos experiment found the flaw"],
