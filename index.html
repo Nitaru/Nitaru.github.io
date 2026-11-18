@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Nika Tolordava · Linux, infrastructure and SRE</title>
   <meta name="description" content="L2 support engineer at Virtuozzo building toward Linux, infrastructure and SRE work. Hardened Linux, Kubernetes, Terraform on AWS, CI/CD and monitoring projects, each with tests that prove it works.">
-  <meta name="theme-color" content="#0b0d10">
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230b0d10'/%3E%3Cpath d='M8 22V10l16 12V10' fill='none' stroke='%235eead4' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+  <meta name="theme-color" content="#0d1117">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230d1117'/%3E%3Cpath d='M8 22V10l16 12V10' fill='none' stroke='%2380a0c0' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
   <link rel="stylesheet" href="assets/css/styles.css">
   <script>
     // Apply the saved theme before first paint to avoid a flash.
@@ -19,6 +19,7 @@
 </head>
 <body>
   <a class="skip" href="#main">Skip to content</a>
+  <div class="progress" id="progress" aria-hidden="true"></div>
 
   <header class="nav" id="top">
     <a class="brand" href="#top" aria-label="Nika Tolordava, home"><span class="brand-mark">N</span><span class="brand-name">Nika Tolordava</span></a>
@@ -38,8 +39,12 @@
 
   <main id="main">
     <section class="hero" aria-labelledby="hero-title">
+      <svg class="hero-trace" viewBox="0 0 1200 150" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+        <path class="trace" d="M0 88 L90 88 L105 76 L120 88 L136 88 L144 104 L156 36 L168 116 L178 88 L196 88 L212 72 L230 88 L460 88 L475 76 L490 88 L506 88 L514 104 L526 36 L538 116 L548 88 L566 88 L582 72 L600 88 L820 88 L835 76 L850 88 L866 88 L874 104 L886 36 L898 116 L908 88 L926 88 L942 72 L960 88 L1200 88"/>
+        <path class="trace live" d="M0 88 L90 88 L105 76 L120 88 L136 88 L144 104 L156 36 L168 116 L178 88 L196 88 L212 72 L230 88 L460 88 L475 76 L490 88 L506 88 L514 104 L526 36 L538 116 L548 88 L566 88 L582 72 L600 88 L820 88 L835 76 L850 88 L866 88 L874 104 L886 36 L898 116 L908 88 L926 88 L942 72 L960 88 L1200 88"/>
+      </svg>
       <div class="hero-copy">
-        <p class="eyebrow"><span class="dot" aria-hidden="true"></span> Tbilisi, Georgia</p>
+        <p class="eyebrow"><span class="dot" aria-hidden="true"></span> Tbilisi, Georgia <span class="uptime">· uptime: running</span></p>
         <h1 id="hero-title">I keep production<br>clusters <em>honest</em>.</h1>
         <p class="lead" id="hero-lead"></p>
         <div class="cta">
@@ -102,6 +107,7 @@
   </main>
 
   <footer class="footer">
+    <svg class="foot-trace" viewBox="0 0 1200 24" preserveAspectRatio="none" aria-hidden="true"><path d="M0 12H520L534 6 548 12H566L572 19 580 1 588 22 594 12H640L654 6 668 12H1200"/></svg>
     <span>© <span id="year"></span> Nika Tolordava</span>
     <span class="muted">Plain HTML, CSS and JavaScript. No trackers, no frameworks.</span>
   </footer>

@@ -83,6 +83,7 @@ window.DATA = {
   projects: [
     {
       id: "kubernetes",
+      brand: "#326CE5",
       title: "Kubernetes Hands-On",
       tagline: "A production-style platform on a local 3-node cluster",
       repo: "https://github.com/Nitaru/Kubernetes-Hands-On",
@@ -101,6 +102,7 @@ window.DATA = {
     },
     {
       id: "aws",
+      brand: "#7B42BC",
       title: "AWS Terraform Hands-On",
       tagline: "A VPC, a hardened bastion and an Auto Scaling web tier, applied, tested and destroyed",
       repo: "https://github.com/Nitaru/AWS-Terraform-Hands-On",
@@ -119,6 +121,7 @@ window.DATA = {
     },
     {
       id: "linux",
+      brand: "#EE0000",
       title: "Linux Hands-On",
       tagline: "A hardened bastion, VPN and private server, all built by Ansible",
       repo: "https://github.com/Nitaru/Linux-Hands-On",
@@ -136,6 +139,7 @@ window.DATA = {
     },
     {
       id: "devops",
+      brand: "#2496ED",
       title: "DevOps Hands-On",
       tagline: "Four classic DevOps projects, each runnable with Docker Compose",
       repo: "https://github.com/Nitaru/Nitaru_DevOps_Shenanigans",

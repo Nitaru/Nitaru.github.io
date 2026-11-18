@@ -24,7 +24,7 @@
     root.setAttribute("data-theme", next);
     try { localStorage.setItem("theme", next); } catch (e) {}
     var meta = document.querySelector('meta[name="theme-color"]');
-    if (meta) meta.setAttribute("content", next === "light" ? "#f7f6f2" : "#0b0d10");
+    if (meta) meta.setAttribute("content", next === "light" ? "#f6f8fa" : "#0d1117");
     return next;
   };
   $("theme-toggle").addEventListener("click", window.toggleTheme);
@@ -130,6 +130,7 @@
         el("p", { class: "p-tag" }, p.tagline),
         el("p", { class: "p-sum" }, p.summary),
         metrics, tagWrap, toggle, detail);
+      if (p.brand) root.style.setProperty("--brand", p.brand);
       cards[p.id] = { root: root, tags: tags };
       $("project-list").appendChild(root);
     });
@@ -157,6 +158,24 @@
 
   renderSkills();
   renderProjects();
+
+  /* ---------- spotlight on cards, scroll progress ---------- */
+  if (!reduced) {
+    document.addEventListener("pointermove", function (e) {
+      var t = e.target.closest && e.target.closest(".project, .skill-group, .principles li, .btn");
+      if (!t) return;
+      var r = t.getBoundingClientRect();
+      t.style.setProperty("--mx", (e.clientX - r.left) + "px");
+      t.style.setProperty("--my", (e.clientY - r.top) + "px");
+    }, { passive: true });
+  }
+  var bar = $("progress");
+  function onScroll() {
+    var h = document.documentElement.scrollHeight - window.innerHeight;
+    bar.style.transform = "scaleX(" + (h > 0 ? Math.min(1, window.scrollY / h) : 0) + ")";
+  }
+  window.addEventListener("scroll", onScroll, { passive: true });
+  onScroll();
 
   /* ---------- scroll: reveal + active nav ---------- */
   var sections = Array.prototype.slice.call(document.querySelectorAll(".reveal"));
