@@ -158,6 +158,32 @@ window.DATA = {
       ],
     },
   ],
+  startHere: {
+    intro: "Short on time? Read these in this order. Each one runs from a single command, has a test or demo that can fail, and says what it does not cover.",
+    steps: [
+      {
+        id: "aws", brand: "#7B42BC", title: "AWS Terraform Hands-On", why: "Read this first",
+        story: "The smallest complete story: a real AWS stack applied, checked from outside (9 of 9 checks), broken on purpose by killing an instance, and destroyed with nothing left. It also shows me catching my own bad test, a check that could never fail.",
+        read: [["Measured results", "https://github.com/Nitaru/AWS-Terraform-Hands-On#measured-results"], ["What went wrong", "https://github.com/Nitaru/AWS-Terraform-Hands-On#things-that-went-wrong-and-what-they-taught-me"]],
+      },
+      {
+        id: "kubernetes", brand: "#326CE5", title: "Kubernetes Hands-On", why: "Then this, for depth",
+        story: "A platform built in layers: ingress, autoscaling, SLO alerts, image scanning, admission policies and GitOps. Start at the proof: 55 of 55 requests succeeded while every pod was replaced, and a password bug I only found by checking two real Git-driven syncs.",
+        read: [["Prove it", "https://github.com/Nitaru/Kubernetes-Hands-On#prove-it"], ["GitOps", "https://github.com/Nitaru/Kubernetes-Hands-On#gitops"]],
+      },
+      {
+        id: "linux", brand: "#EE0000", title: "Linux Hands-On", why: "For the Linux and security side",
+        story: "Two VMs configured only by Ansible: key-only SSH, a bastion, a WireGuard VPN and a file integrity checker. Run the scripted attacks, then read the threat model, which lists what the hardening does not cover and the gaps I would fix first.",
+        read: [["See it work", "https://github.com/Nitaru/Linux-Hands-On#see-it-work"], ["Threat model", "https://github.com/Nitaru/Linux-Hands-On/blob/main/docs/threat-model.md"]],
+      },
+      {
+        id: "devops", brand: "#2496ED", title: "DevOps Hands-On", why: "For breadth",
+        story: "Four smaller projects, each runnable with Docker Compose: service discovery, a five-service app, blue-green deployment and a monitoring stack. Three have end-to-end test scripts (83 checks between them) and the fourth has a zero-downtime test.",
+        read: [["Tests", "https://github.com/Nitaru/Nitaru_DevOps_Shenanigans#tests"]],
+      },
+    ],
+  },
+
   diagrams: {
     k8s: {
       w: 720, h: 250,

@@ -45,6 +45,18 @@
     $("timeline").appendChild(el("li", {}, el("span", { class: "when" }, e.when), el("h3", {}, e.title), el("p", { class: "org" }, e.org), ul));
   });
 
+  /* ---------- start here ---------- */
+  $("start-intro").textContent = D.startHere.intro;
+  D.startHere.steps.forEach(function (st, i) {
+    var links = el("div", { class: "start-links" });
+    st.read.forEach(function (r) { links.appendChild(el("a", { href: r[1], target: "_blank", rel: "noopener noreferrer" }, r[0] + " ↗")); });
+    var li = el("li", { class: "start-step" },
+      el("span", { class: "start-num", "aria-hidden": "true" }, String(i + 1)),
+      el("div", {}, el("p", { class: "start-why" }, st.why), el("h3", {}, st.title), el("p", {}, st.story), links));
+    li.style.setProperty("--brand", st.brand);
+    $("start-steps").appendChild(li);
+  });
+
   /* ---------- skills + project filter ---------- */
   var active = null;
   var chipEls = [];
